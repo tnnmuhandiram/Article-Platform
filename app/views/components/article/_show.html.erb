@@ -1,0 +1,27 @@
+<div class="text-center">
+    <div class="container">
+    <div class="row justify-content-center">
+        <div class="col-lg-12">
+        <!-- Portfolio Modal - Title -->
+        <h2 class="portfolio-modal-title text-secondary text-uppercase mb-0"><%= @article.title %></h2>
+        <!-- Icon Divider -->
+        <div class="divider-custom">
+            <div class="divider-custom-line"></div>
+            <div class="divider-custom-icon">
+            <i class="fas fa-star"></i>
+            </div>
+            <div class="divider-custom-line"></div>
+        </div>
+        <!-- Portfolio Modal - Image -->
+        <img class="img-fluid rounded mb-5" src="<%= @article.urlToImage %>" alt="">
+        <!-- Portfolio Modal - Text -->
+        <h5><%= @article.author %></h5>
+        <p class="mb-5"><%= @article.description  %></p>
+        <p class="mb-5"><%= @article.content  %></p>
+        <button class="btn btn-primary" href="#" data-dismiss="modal">
+            Close Window
+        </button>
+        </div>
+    </div>
+    </div>
+</div>

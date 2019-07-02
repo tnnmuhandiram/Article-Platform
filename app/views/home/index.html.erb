@@ -1,0 +1,271 @@
+<!-- Navigation -->
+  <nav class="navbar navbar-expand-lg bg-secondary text-uppercase fixed-top" id="mainNav">
+    <div class="container">
+      <a class="navbar-brand js-scroll-trigger" href="#page-top">Great Article</a>
+      <button class="navbar-toggler navbar-toggler-right text-uppercase font-weight-bold bg-primary text-white rounded" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        Menu
+        <i class="fas fa-bars"></i>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item mx-0 mx-lg-1">
+            <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#latestarticle">Latest Article</a>
+          </li>
+          <li class="nav-item mx-0 mx-lg-1">
+            <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#import">Import</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Masthead -->
+  <header class="masthead bg-primary text-white text-center">
+    <div class="container d-flex align-items-center flex-column">
+
+      <!-- Masthead Avatar Image -->
+      <%= image_tag("avataaars.svg", :alt => "rss feed", :class=> "masthead-avatar mb-5") %>
+
+      <!-- Masthead Heading -->
+      <h1 class="masthead-heading text-uppercase mb-0">Online Article Platform</h1>
+
+      <!-- Icon Divider -->
+      <div class="divider-custom divider-light">
+        <div class="divider-custom-line"></div>
+        <div class="divider-custom-icon">
+          <i class="fas fa-star"></i>
+        </div>
+        <div class="divider-custom-line"></div>
+      </div>
+
+      <!-- Masthead Subheading -->
+      <p class="masthead-subheading font-weight-light mb-0">News - What On - Community</p>
+
+    </div>
+  </header>
+
+  <!-- Latest Artcle Section -->
+  <section class="page-section portfolio" id="latestarticle">
+    <div class="container">
+
+      <!-- Latest Article Section Heading -->
+      <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Latest Most Popular Article</h2>
+
+      <!-- Icon Divider -->
+      <div class="divider-custom">
+        <div class="divider-custom-line"></div>
+        <div class="divider-custom-icon">
+          <i class="fas fa-star"></i>
+        </div>
+        <div class="divider-custom-line"></div>
+      </div>
+
+      <!-- Latest Artcle Grid Items -->
+      <div class="row">
+        <% @articles.each do |article| %>
+          <!-- Latest Artcle Item 6 -->
+          <div class="card">
+            <div class="imgWrap">
+                <img src="<%= article.urlToImage  %>" alt="Avatar" >
+            </div>
+            
+              <div class="card-container">
+                  <h4><b><%= article.author %></b></h4>
+                  <p>
+                  <%= article.title %>    
+                  </p>
+              </div>
+              <div class="btnWrap">
+                  <button class="btn btn-success article-readmore-btn" data-id="<%= article.id %>"   data-toggle="modal" data-target="#articleModal">Read more</button>
+              </div>
+          </div>
+        <% end %>
+      </div>
+      <!-- /.row -->
+
+    </div>
+  </section>
+
+  <!-- Modal -->
+  <div class="modal fade" id="articleModal" tabindex="-1" role="dialog" aria-labelledby="articleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body" id="single-article-body">
+          
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Import Section -->
+  <section class="page-section bg-primary text-white mb-0" id="import">
+    <div class="container">
+
+      <!-- Import Section Heading -->
+      <h2 class="page-section-heading text-center text-uppercase text-white">Import</h2>
+
+      <!-- Icon Divider -->
+      <div class="divider-custom divider-light">
+        <div class="divider-custom-line"></div>
+        <div class="divider-custom-icon">
+          <i class="fas fa-star"></i>
+        </div>
+        <div class="divider-custom-line"></div>
+      </div>
+
+      <!-- Import Section Content -->
+      <div class="row">
+        <div class="col-lg-4 ml-auto">
+          <p class="lead">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting</p>
+        </div>
+        <div class="col-lg-4 mr-auto">
+          <p class="lead">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting</p>
+        </div>
+      </div>
+
+      <!-- Import Section Button -->
+      <div class="text-center mt-4" id="select_type">
+        <div class="form-group " >
+            <select class="form-control" id="importType" >
+                <option value="1" >Top Headline</option>
+                <option value="2" >Everything</option>
+            </select>
+        </div>
+
+        <div id="apiImportTypeDiv">
+          <div class="container">
+            <%= bootstrap_form_for :anything, url: "home/import/top-headline" do |f|%>
+              <div class="hero-unit">
+          
+              <div class="row">
+                  <div class="col-md-6 pull-left">
+                      <%=f.text_field '',name:'key',placeholder: "Search Key" %>
+                  </div>
+          
+                  <div class="col-md-6 pull-right">
+                      <%=f.text_field ' ',name:'source',placeholder: "sources" %>
+                  </div>
+              </div>
+      
+              <div class="row">
+                  <div class="col-md-6 pull-right">
+                      <%=f.select '' ,options_for_select([['business', 'business'], ['education', 'education']]) %>
+                  </div>
+                  <div class="col-md-6 pull-left">
+                      <%=f.select '' ,options_for_select([['Sri Lanka', 'SL'], ['United State of America', 'US'],['Australia','AUS']]) %>
+                  </div>
+              </div>
+          
+              <div class="row">
+                  <div class="col-md-12">
+                      <%= f.submit :'Import Top Headline', class: 'btn btn-success col-md-12'%>
+                  </div>
+              </div>
+          
+              </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  
+
+  <!-- Footer -->
+  <footer class="footer text-center">
+    <div class="container">
+      <div class="row">
+
+        <!-- Footer Location -->
+        <div class="col-lg-4 mb-5 mb-lg-0">
+          <h4 class="text-uppercase mb-4">Location</h4>
+          <p class="lead mb-0">2215 John Daniel Drive
+            <br>Clark, MO 65243</p>
+        </div>
+
+        <!-- Footer Social Icons -->
+        <div class="col-lg-4 mb-5 mb-lg-0">
+          <h4 class="text-uppercase mb-4">Around the Web</h4>
+          <a class="btn btn-outline-light btn-social mx-1" href="#">
+            <i class="fab fa-fw fa-facebook-f"></i>
+          </a>
+          <a class="btn btn-outline-light btn-social mx-1" href="#">
+            <i class="fab fa-fw fa-twitter"></i>
+          </a>
+          <a class="btn btn-outline-light btn-social mx-1" href="#">
+            <i class="fab fa-fw fa-linkedin-in"></i>
+          </a>
+          <a class="btn btn-outline-light btn-social mx-1" href="#">
+            <i class="fab fa-fw fa-dribbble"></i>
+          </a>
+        </div>
+
+        <!-- Footer About Text -->
+        <div class="col-lg-4">
+          <h4 class="text-uppercase mb-4">About Freelancer</h4>
+          <p class="lead mb-0">Freelance is a free to use, MIT licensed Bootstrap theme created by
+            <a href="http://startbootstrap.com">Start Bootstrap</a>.</p>
+        </div>
+
+      </div>
+    </div>
+  </footer>
+
+  <!-- Copyright Section -->
+  <section class="copyright py-4 text-center text-white">
+    <div class="container">
+      <small>Copyright &copy; Your Website 2019</small>
+    </div>
+  </section>
+
+  <!-- Scroll to Top Button (Only visible on small and extra-small screen sizes) -->
+  <div class="scroll-to-top d-lg-none position-fixed ">
+    <a class="js-scroll-trigger d-block text-center text-white rounded" href="#page-top">
+      <i class="fa fa-chevron-up"></i>
+    </a>
+  </div>
+
+  <!-- Change Import Type Form -->
+  
+
+  <script>
+  
+  //change Import type form when selected 
+  $("#importType").on('change', function() {
+    $.ajax({
+      type: "GET", 
+      url: "/select-type",
+      data: {'type':this.value},
+    success: function(result){
+      $("#apiImportTypeDiv").html(result);
+    },
+      error: function(jqXHR, textStatus, errorThrown){}
+    });
+  });
+
+  //load single article
+  $('.article-readmore-btn').click(function(){
+    var article_id = $(this).data('id');
+    $.ajax({
+      type: "GET", 
+      url: "/article/show",
+      data: {'article_id':article_id},
+    success: function(result){
+      $("#single-article-body").html(result);
+    },
+      error: function(jqXHR, textStatus, errorThrown){}
+    });
+  });
+
+  //load datepicker 
+  $('.datepicker').each(function(){
+    $(this).datepicker();
+  });
+
+  </script>

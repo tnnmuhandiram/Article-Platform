@@ -1,0 +1,33 @@
+#select_type
+{
+    text-align:center;
+    width: 50%;
+    margin: 0 auto;
+}
+
+.card {
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s; 
+    padding: 10px; 
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    width: 25%;
+    height: 450px;
+  }
+.card .imgWrap img{
+    widows: 100%;
+    max-width:100%;
+}
+  .card:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+  }
+  
+  .card-container {
+    padding: 2px 16px;
+  }
+.btnWrap{
+  margin-top:auto;
+  text-align:right;
+}

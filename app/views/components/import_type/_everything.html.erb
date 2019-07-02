@@ -1,0 +1,49 @@
+<div class="container">
+<%= bootstrap_form_for :everything, url: "home/import/everything" do |f|%>
+    <div class="hero-unit">
+
+      <div class="row">
+        <div class="col-md-6 pull-left">
+            <%=f.text_field '',name: 'key',placeholder: "Search Key" %>
+        </div>
+
+        <div class="col-md-6 pull-right">
+            <%=f.text_field ' ',name: 'source',placeholder: "sources" %>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-6 pull-left">
+            <%=f.date_field '',name: 'from',class: 'datepicker',placeholder: "from", value:Date.today %>
+        </div>
+
+        <div class="col-md-6 pull-right">
+            <%=f.text_field ' ',name: 'to',placeholder: "to" %>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-6 pull-left">
+            <%=f.text_field '',name: 'domain',placeholder: "domains" %>
+        </div>
+
+        <div class="col-md-6 pull-right">
+            <%=f.select '' ,options_for_select([['English', 'en'], ['French', 'fr']]) %>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-6 pull-left">
+            <%=f.select ''   ,options_for_select([['Published', 'PublishedAt'], ['relevent', 'relevents'],['popularities','popularity']]) %>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-12">
+            <%= f.submit :'Import Everything', class: 'btn btn-success col-md-12'%>
+        </div>
+      </div>
+
+    </div>
+  <% end %>
+</div>

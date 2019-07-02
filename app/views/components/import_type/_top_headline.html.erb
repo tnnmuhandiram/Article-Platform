@@ -1,0 +1,32 @@
+<div class="container">
+    <%= bootstrap_form_for :anything, url: "home/import/top-headline" do |f|%>
+        <div class="hero-unit">
+    
+        <div class="row">
+            <div class="col-md-6 pull-left">
+                <%=f.text_field '',name:'key',placeholder: "Search Key" %>
+            </div>
+    
+            <div class="col-md-6 pull-right">
+                <%=f.text_field ' ',name:'source',placeholder: "sources" %>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6 pull-right">
+                <%=f.select '' ,options_for_select([['business', 'business'], ['education', 'education']]) %>
+            </div>
+            <div class="col-md-6 pull-left">
+                <%=f.select '' ,options_for_select([['Sri Lanka', 'SL'], ['United State of America', 'US'],['Australia','AUS']]) %>
+            </div>
+        </div>
+    
+        <div class="row">
+            <div class="col-md-12">
+                <%= f.submit :'Import Top Headline', class: 'btn btn-success col-md-12'%>
+            </div>
+        </div>
+    
+        </div>
+    <% end %>
+</div>
