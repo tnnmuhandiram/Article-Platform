@@ -49,6 +49,7 @@ class HomeController < ApplicationController
     require 'open-uri'
     url = "https://newsapi.org/v2/everything?"\
       "q=#{key}&from=#{ DateTime.parse(from).strftime("%Y-%m-%d")}&sortBy=#{sortBy}&apiKey=#{Figaro.env.NEWS_API_KEY}"
+
     req = open(url)
     response = req.read
     require 'digest/sha1'
