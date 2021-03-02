@@ -1,0 +1,24 @@
+apiVersion: autoscaling/v2beta1
+kind: HorizontalPodAutoscaler
+metadata:
+  annotations: null
+  labels:
+    app_environment_id: ebf87eaf-52d5-48f8-bb3b-0e3eb9e022c0
+    env_id: ac82d0b0-7250-4388-86ad-7277871c93cb
+    env_name: test-env
+    hpa_id: 9f629ab1-74b5-4f7b-8383-415a92eabfc0
+    organization_id: c569bcc5-3d17-4a08-a77b-693d841360c6
+    platformer_app_id: 31bcb57c-87bb-4d00-8bf8-857103982288
+    platformer_app_name: tharindu-github
+    platformer_component: rudder
+    platformer_system: "true"
+    project_id: b9bb816b-cf68-43c7-bddc-a92ea9f7743b
+  name: tharindu-github
+  namespace: test
+spec:
+  maxReplicas: 1
+  minReplicas: 1
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: tharindu-github
